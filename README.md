@@ -30,6 +30,9 @@ Usage:
 2. Si le script est lancé par launchd, il doit avoir tous les chemins en absolu car le répertoire de départ sera /
 
 
+## Version 0.3 ##
+
+Remplacement du fichier attention par un fichier attention.zip qui contient l'icône de la boîte de dialogue du script.
 
 ## Version 0.2 ##
 
