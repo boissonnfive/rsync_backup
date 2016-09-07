@@ -89,7 +89,10 @@ media-type='application/xhtml+xml; charset=utf-8'/>
 <li>
 <xsl:choose>
 <xsl:when test='string[text()="WebBookmarkTypeLeaf"]'>
+<a>
+<xsl:attribute name="href"><xsl:value-of select='key[text()="URLString"]/following-sibling::string[1]'/></xsl:attribute>
 <xsl:apply-templates select='key[text()="URIDictionary"]/following-sibling::dict[1]' mode='URIDictionary'/>
+</a>
 </xsl:when>
 <xsl:when test='string[text()="WebBookmarkTypeList"]'>
 <xsl:if test='key[text()="Title"]'>
@@ -102,9 +105,9 @@ media-type='application/xhtml+xml; charset=utf-8'/>
 </xsl:template>
 
 <xsl:template match='dict' mode='URIDictionary'>
-<a href='{string[1]}'>
+
 <xsl:value-of select='key[text()="title"]/following-sibling::string[1]'/>
-</a>
+
 </xsl:template>
 
 </xsl:stylesheet>

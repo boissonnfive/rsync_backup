@@ -31,6 +31,9 @@ Usage:
 
 
 
+## Version 0.2 ##
+
+Modification du script export_safari_bookmars.sh pour changer le xsl qui transforme un fichier plist en XHTML.
 
 ## Version 0.1 ##
 
