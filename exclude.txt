@@ -1,0 +1,86 @@
+# RSync exclude file
+# RSync documentation:
+# --exclude-from=FILE
+# This option is related to the --exclude option, but it  specifies  a  FILE
+# that  contains  exclude  patterns (one per line).  Blank lines in the file
+# and lines starting with ';' or '#' are ignored.  If FILE is  -,  the  list
+# will be read from standard input.
+
+*~
+.CFUserTextEncoding
+.DS_Store
+.FontForge
+.GuitarPro
+# On n'oublie pas d'exclure la corbeille...
+.Trash/*
+.Xauthority
+.Xcode
+.assistant
+.civclientrc
+.config
+.crossftp
+.cups
+.cvspass
+.designer
+.dvdcss
+.ede
+.fontconfig
+.fonts.cache-1
+.freeciv
+.gdb_history
+.gimp-2.2
+.gnome2
+.gtk-bookmarks
+.inkscape
+.inkscape-etc
+.irb_history
+.jalbum-ftp-accounts.xml
+.jalbum-recent-projects.prope
+.jedit
+.lesshst
+.macports
+.mplayer
+.profile
+.projects.ede
+.recently-used
+.recently-used.xbel
+.sh_history
+.spumux
+.thumbnails
+.viminfo
+.wapi
+# Le dossier .wine pose problème et fait boucler rsync (?!)
+.wine
+.zenmap
+.wine
+Desktop/*
+Downloads/*
+Library/*
+Movies/*
+Music/iTunes/Album Artwork/*
+Music/iTunes/iTunes Music/*
+Music/iTunes/Mobile Applications/*
+Music/iTunes/Previous iTunes Libraries/*
+Projects/*
+Public/*
+# Sources n'existe pas chez moi, mais je le garde car la doc dit:
+# --delete
+# This tells rsync to delete extraneous files ...
+# ... Files that are excluded from transfer are also  excluded  from
+# being  deleted  unless  you  use  the --delete-excluded option or mark the
+# rules as only matching on the sending side (see the include/exclude  modi-
+# fiers in the FILTER RULES section).
+Sources/*
+# Trop gros pour être sauvegardé
+Virtual Machines.localized/*
+# Trop gros pour l'instant
+Windows/*
+# Trop gros et déjà sur mon disque externe
+installation/*
+# J'ai rajouté ces fichiers windows agaçants
+Thumbs.db
+desktop.ini
+# Ces fichiers n'existent pas sur ma machine mais existent sur
+# la destination
+.com.apple.timemachine.supported
+.localized
