@@ -1,0 +1,8 @@
+Version 0.4
+===========
+
+- Suppression de la connexion aux serveurs samba "Photos_Couple" et "dossier public de maman": on ne se connecte qu'au serveur "bruno"
+- changement de nom et d'emplacement pour le backup: ~/Desktop/log_backup.txt devient /Library/Logs/bb_backup.log
+- le fichier de log est filtré pour enlever la liste des répertoires visités
+- On se déconnecte du serveur "bruno" quand on a terminé le backup
+- Un message s'affiche s'il y a eu une erreur lors du backup 

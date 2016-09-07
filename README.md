@@ -30,6 +30,18 @@ Usage:
 2. Si le script est lancé par launchd, il doit avoir tous les chemins en absolu car le répertoire de départ sera /
 
 
+## Version 0.4 ##
+
+- fichier startup.sh : 
+	+ Changement de nom et d'emplacement pour le fichier de trace de la sauvegarde : `~/Desktop/log_backup.txt` devient `/Library/Logs/bb_backup.log` 
+	+ Suppression de la connexion aux serveurs samba "Photos_Couple" et "dossier public de maman": on ne se connecte qu'au serveur "bruno"
+	+ Nettoie le fichier de trace pour enlever la liste des répertoires visités
+	+ Un message s'affiche s'il y a eu une erreur lors du backup
+	+ On se déconnecte du serveur "bruno" quand on a terminé la sauvegarde
+- fichier com.boissonnfive.startup.plist :
+	+ Modification du nom de fichier de trace : `/Library/Logs/bb_backup.log`
+
+
 ## Version 0.3 ##
 
 Remplacement du fichier attention par un fichier attention.zip qui contient l'icône de la boîte de dialogue du script.

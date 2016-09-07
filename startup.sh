@@ -37,20 +37,22 @@ declare -r EXCLUDE="exclude.txt"
 declare -ri WAIT=120
 
 # Le fichier de traces est géré par launchd
-#declare -r LOG_FILE="~/Desktop/log_backup.txt"
+declare -r LOG_FILE="/Library/Logs/bb_backup.log"
 declare -r CHECK_NETWORK=check_network.sh
 declare -r SAMBA=connect_samba_shares.sh
 declare -r SAFARI=export_safari_bookmarks.sh
 declare -r SAFARI_BOOKMARKS=$HOME/Documents/favoris/signets_safari.html
 declare -r AB=ExportAddressBookToVcf.scpt
 declare -r INTERNET_IP="88.162.114.99"
-declare -ra mountDiskList=( bruno Photos_Couple 'dossier public de maman' )
+#declare -ra mountDiskList=( bruno Photos_Couple 'dossier public de maman' )
+declare -ra mountDiskList=( bruno )
 declare -r FUNCTIONS="functions.sh"
 declare -r RSYNC_306="/usr/local/bin/rsync"
 declare -r ERROR1="Backup impossible: réseau non identifié ou connexion impossible."
 declare -r ERROR2="Backup impossible: échec des connexions aux serveurs."
 declare -r ERROR3="Backup IMPOSSIBLE car lecture IMPOSSIBLE de ${SOURCE}"
 declare -r ERROR4="Backup IMPOSSIBLE car ${DESTINATION} non connecté/modifiable"
+declare -r ERROR5="Des erreurs sont apparues lors du backup"
 declare -r HEADER="Backup de `basename \"${SOURCE}\"` vers `basename \"${DESTINATION}\"`"
 declare -i RETURN=0
 declare -r SCRIPT_DIR=`dirname $0`
@@ -90,9 +92,22 @@ else
 		fi
 		
 		# 3- Sauvegarde
-	    # pour les test, utiliser --dry-run (ne fait rien)
+		# pour les tests, utiliser --dry-run (ne fait rien)
 		#${RSYNC_306} --dry-run -avuL --delete --exclude-from "${SCRIPT_DIR}/${EXCLUDE}" "${SOURCE}" "${DESTINATION}"
 		${RSYNC_306} -avuL --delete --exclude-from "${SCRIPT_DIR}/${EXCLUDE}" "${SOURCE}" "${DESTINATION}"
+		
+		#3b- Supprime les répertoires du fichiers de trace
+		sed -e '/.*\/$/d' -i "" "${LOG_FILE}"
+		
+		#3c- Recherche les erreurs dans le fichier de trace
+		if grep "rsync error:" "${LOG_FILE}" ; then
+			printError "${ERROR5}"
+			RETURN=1
+		fi
+		
+		#4- Démonte le serveur Samba
+		umount /Volumes/bruno
+		
 	fi			
 fi
 

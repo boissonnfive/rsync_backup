@@ -13,8 +13,8 @@
 	<key>RunAtLoad</key>
 	<true/>
 	<key>StandardErrorPath</key>
-	<string>/Users/brunoboissonnet/Desktop/log_backup.txt</string>
+	<string>/Library/Logs/bb_backup.log</string>
 	<key>StandardOutPath</key>
-	<string>/Users/brunoboissonnet/Desktop/log_backup.txt</string>
+	<string>/Library/Logs/bb_backup.log</string>
 </dict>
 </plist>
