@@ -1,6 +1,8 @@
 # rsync_backup #
 
-Backup my mac with rsync on a samba share
+Sauvegarde de mon mac avec rsync sur un partage samba.
+
+## Description ##
 
 Ce script lance le backup de la machine sur un serveur samba (le partage samba est monté comme un disque local — pas de ssh).
 
